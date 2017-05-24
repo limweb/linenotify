@@ -88,12 +88,13 @@ function notify_message($token=null,$message=null){
     
     if($token && $message) {
             $ln = new Linenotify($token);
-			$ln->message	        = (isset($GET_['message'])  ? $_GET['message']  : '' );
-			$ln->image	            = (isset($GET_['image'])    ? $_GET['image']    : null );
-			$ln->stickerPackageId	= (isset($GET_['stkpkgid']) ? $_GET['stkpkgid'] : null );
-			$ln->stickerId	        = (isset($GET_['stkid'])    ? $_GET['stkid']    : null );
+			$ln->message	        = (isset($_GET['message'])  ? $_GET['message']  : '' );
+			$ln->image	            = (isset($_GET['image'])    ? $_GET['image']    : null );
+			$ln->stickerPackageId	= (isset($_GET['stkpkgid']) ? $_GET['stkpkgid'] : null );
+			$ln->stickerId	        = (isset($_GET['stkid'])    ? $_GET['stkid']    : null );
 			$ln->exec();
-			echo $token,"<br/>",$message;
+			echo 'test';
+// 			echo $token,"<br/>",$message;
     // $queryData = array('message' => $message);
     // $queryData = http_build_query($queryData,'','&');
     // $headerOptions = array(
