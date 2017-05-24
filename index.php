@@ -84,36 +84,19 @@ class Linenotify
 
 }
 
-function notify_message($token=null,$message=null){
-    
-    if($token && $message) {
+function notify_message(){
+	if($_GET['token']) {
+			$token = $_GET['token'];
             $ln = new Linenotify($token);
 			$ln->message	        = (isset($_GET['message'])  ? $_GET['message']  : '' );
 			$ln->image	            = (isset($_GET['image'])    ? $_GET['image']    : null );
 			$ln->stickerPackageId	= (isset($_GET['stkpkgid']) ? $_GET['stkpkgid'] : null );
 			$ln->stickerId	        = (isset($_GET['stkid'])    ? $_GET['stkid']    : null );
 			$ln->exec();
-			echo 'test';
-// 			echo $token,"<br/>",$message;
-    // $queryData = array('message' => $message);
-    // $queryData = http_build_query($queryData,'','&');
-    // $headerOptions = array(
-    //     'http'=>array(
-    //         'method'=>'POST',
-    //         'header'=> "Content-Type: application/x-www-form-urlencoded\r\n"
-    //         		  ."Authorization: Bearer ".LINE_TOKEN."\r\n"
-    //                   ."Content-Length: ".strlen($queryData)."\r\n",
-    //         'content' => $queryData
-    //     )
-    // );
-    // $context = stream_context_create($headerOptions);
-    // $result = file_get_contents(LINE_API,FALSE,$context);
-    // $res = json_decode($result);
-	   // return $res;
+		    return 'ok';
     } else {
-        return 'Error';
+	        return 'Error';
     }
 }
-$res = notify_message($_GET['token'],$_GET['message']);
-//var_dump($res);
+$res = notify_message();
 echo $res;
